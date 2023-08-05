@@ -2,12 +2,13 @@ const currentIp = localStorage.getItem("currentIp");
 console.log(currentIp);
 let latitude;
 let longitude;
+let pincode;
 
 async function getIPDetails() {
     // api = https://ipinfo.io/${IP}/geo
     let response = await fetch(`https://ipinfo.io/${currentIp}?token=30dd7efacbc702`);
     let result = await response.json();
-    console.log(result);
+    // console.log(result);
 
     const coordinate = result.loc;
     let arr = coordinate.split(",");
@@ -28,18 +29,52 @@ async function getIPDetails() {
     let region = document.getElementById("region");
     region.innerText += result.region;
     let hostname = document.getElementById("hostname");
-
+    pincode = parseInt(result.postal);
 
     updateMap();
 }
 
 getIPDetails();
 
-
 function updateMap() {
     // "https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed"
     const map = document.getElementsByTagName("iframe")[0];
     map.src = `https://maps.google.com/maps?q=${latitude}, ${longitude}&x=15&output=embed`;
-    console.log(map);
+    // console.log(map);
+    postOfficeDetails();
 }
 
+async function postOfficeDetails() {
+    // https://api.postalpincode.in/pincode/${pincode} - where ${pincode}
+    let response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+    let result = await response.json();
+
+    let details = result[0];
+    // console.log(result[0]);
+    console.log(details.PostOffice[0]);
+    
+    displayPostOffice(details.PostOffice);
+}
+
+function displayPostOffice(postOfficeArr) {
+    console.log("dia");
+    let container = document.getElementById("postOfficeList");
+    let innerContent = "";
+    let n = postOfficeArr.length;
+    for(let i=0; i<n; i++) {
+        let postoffice = postOfficeArr[i];
+        let content = `<div class="postOffice-card">
+        <p>Name ${postoffice.Name}</p>
+        <p>Branch Type ${postoffice.BranchType}</p>
+        <p>Delivery Status ${postoffice.DeliveryStatus}</p>
+        <p>District ${postoffice.District}</p>
+        <p>Division ${postoffice.Division}</p>
+    </div>`
+        // console.log(content);
+        innerContent += content;
+        // container.append(content);
+    }
+    console.log("dia");
+
+    container.innerHTML = innerContent;
+}
