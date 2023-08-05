@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome To Post Office Locator</title>
+    <title>Your Current IP</title>
     <style>
         *{
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -66,10 +66,13 @@
             font-size: 28px;
             font-weight: 400;
             padding: 10px 50px;
+            cursor: pointer;
+            text-decoration: none;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <!-- Script for getting current IP -->
+    
+    <!-- Script for getting current IP -->
     <script>
      
     /* Add "https://api.ipify.org?format=json" statement
@@ -80,8 +83,10 @@
                 
     $.getJSON("https://api.ipify.org?format=json", function(data) {
          
-        // Setting text of element P with id gfg
+        // Setting text of element P with id ip
         $("#ip").html(data.ip);
+
+        localStorage.setItem("currentIp", data.ip);
     })
     </script>
 </head>
@@ -99,12 +104,8 @@
             <p id="text">Your Current IP Address is &ThinSpace;</p>
             <p id="ip"></p>
         </div>
-        <button>Get Started</button>
+        <a href="./map.html"><button onclick="getIPDetails()">Get Started</button></a>
+        <!-- <button onclick="getIPDetails()">Get Started</button> -->
     </div>
-
-    <script>
-        const ipContainer = document.getElementById("ip");
-
-    </script>
 </body>
 </html>
