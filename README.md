@@ -8,10 +8,10 @@ AccioJob Module Test July. Search Post Office near you Current IP location and v
 - Get the IP Address on the load of the page, where as get the information from the API on the click of the button.
 - Using the lat,long given in the location of the json which you'll get in point 3, show the user's location on google map.
 - Using the timezone given from the json in point 3 get the time of the user's location - refer to this https://usefulangle.com/post/382/javascript-get-date-time-for-timezone
--Please note that you have to get current time from the given TIME ZONE, and not your time.
--From the pincode in the json, send a get req to another API https://api.postalpincode.in/pincode/${pincode} - where ${pincode} is the pincode received in point 3.
--This will give you a list of post offices in that pincode. Map and show all the post offices available in that area.
--Also create a search box and filter the postal offices by name and branch office.
+- Please note that you have to get current time from the given TIME ZONE, and not your time.
+- From the pincode in the json, send a get req to another API https://api.postalpincode.in/pincode/${pincode} - where ${pincode} is the pincode received in point 3.
+- This will give you a list of post offices in that pincode. Map and show all the post offices available in that area.
+- Also create a search box and filter the postal offices by name and branch office.
 # Relevant Links
 - Figma Link- https://www.figma.com/file/PwKrL5twQM6cDwWmL2HoYK/Untitled?node-id=0-1&t=Lo4Jnf4QGzxO0aCH-0
 - How to put lat,long on map - https://stackoverflow.com/questions/33464192/display-an-embedded-google-map-iframe-with-a-marker-on-a-certain-latitude-and-lo
