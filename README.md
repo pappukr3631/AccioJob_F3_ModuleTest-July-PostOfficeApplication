@@ -1,7 +1,7 @@
-AccioJob Module Test
+AccioJob Module Test July.
 
 # Project Overview
-July. Search the Post Office near your Current IP location and view it on Google Maps.
+Search the Post Office near your Current IP location and view it on Google Maps.
 # Task
 - Get the user's IP Address using js scripts, refer to the gfg link given - https://www.geeksforgeeks.org/how-to-get-client-ip-address-using-javascript/
 - Once done, hit an api request at https://ipinfo.io/${IP}/geo , where ${IP} will be the IP of the user.
